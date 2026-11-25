@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FarmaTADH · Farmacología del TADH</title>
+<style>
+:root{--font:"Ancizar Sans","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+--brand:#677d29;--brand-deep:#4c5c1e;--ink:#003241;--text:#2b3a2e;--muted:#66705f;--bg:#f6f6f6;--card:#fff;--line:#d8dccd;--soft:#eef2e2;--soft2:#e3f0f2;
+--gold:#d9a21b;--teal:#0b7a8a;--rose:#b5473a;--violet:#6b4fa3;--shadow:0 2px 10px rgba(40,60,20,.10)}
+:root[data-theme=dark]{--brand:#8aa83a;--brand-deep:#2f3a12;--ink:#cfe9f0;--text:#e0e7d6;--muted:#9aa58d;--bg:#12170d;--card:#1c2314;--line:#36422a;--soft:#252e19;--soft2:#17303a;--shadow:0 2px 10px rgba(0,0,0,.4)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px}
+header.top{position:sticky;top:0;z-index:20;height:56px;background:var(--brand);color:#fff;display:flex;align-items:center;gap:14px;padding:0 22px;border-radius:0 0 28px 0;box-shadow:var(--shadow)}
+header.top .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:.2px}
+header.top .sub{font-size:12px;letter-spacing:.8px;text-transform:uppercase;opacity:.85}
+header.top .sp{flex:1}
+.hbtn{border:1.5px solid rgba(255,255,255,.7);background:transparent;color:#fff;border-radius:20px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+.hbtn:hover{background:rgba(255,255,255,.18)}
+.shell{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:calc(100vh - 56px)}
+nav.side{position:sticky;top:56px;align-self:start;height:calc(100vh - 56px);overflow:auto;background:var(--card);border-right:1px solid var(--line);padding:18px 14px}
+nav.side h6{margin:18px 8px 6px;font-size:11px;letter-spacing:1.4px;color:var(--muted);text-transform:uppercase}
+nav.side a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;color:var(--text);text-decoration:none;font-size:14px}
+nav.side a:hover{background:var(--soft)}
+nav.side a.on{background:var(--soft);font-weight:700;box-shadow:inset 3px 0 0 var(--brand)}
+nav.side .num{width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--text);font-size:11px;font-weight:700;display:grid;place-items:center;flex:none}
+nav.side a.on .num{background:var(--brand);color:#fff}
+nav.side .who{margin:26px 8px 0;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.5}
+main{padding:22px 34px 60px;max-width:1180px;width:100%}
+.crumb{font-size:12px;color:var(--muted)}
+.crumb a{color:var(--muted);text-decoration:none}
+.pill{display:inline-block;margin:8px 0 6px;font-size:12px;color:var(--muted);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:2px 12px}
+h1{margin:4px 0 8px;font-size:32px;line-height:1.15;color:var(--ink);font-weight:800}
+.lead{color:var(--muted);max-width:760px;font-size:16px;margin:0 0 16px}
+.callout{display:flex;gap:14px;align-items:flex-start;margin:14px 0 18px}
+.callout .bubble{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow);max-width:860px}
+.callout b.name{color:var(--gold)}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px 22px;margin:0 0 20px}
+.card>summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:16px}
+.card h3{margin:0 0 10px;color:var(--ink);font-size:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fig{background:var(--card);border:1.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px 18px 16px;margin:0 0 20px}
+.fig .fh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.fig .ft{font-size:14px;color:var(--muted);font-weight:600}
+.btn{font:inherit;font-size:13px;border:1.5px solid var(--brand);color:var(--brand);background:transparent;border-radius:18px;padding:3px 12px;cursor:pointer}
+.btn:hover,.btn.on{background:var(--brand);color:#fff}
+.interp{display:none;background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:8px;font-size:14px}
+.interp.show{display:block}
+svg{max-width:100%;height:auto;display:block}
+svg text{font-family:var(--font)}
+.tile{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+.tile .big{font-size:30px;font-weight:800;color:var(--brand);line-height:1}
+.tile .lbl{font-size:13px;color:var(--muted);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.chip{font:inherit;font-size:13px;border:1.5px solid var(--line);background:var(--card);color:var(--text);border-radius:18px;padding:4px 13px;cursor:pointer}
+.chip:hover{border-color:var(--brand)}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+.tag{display:inline-block;border-radius:10px;padding:1px 9px;font-size:12px;font-weight:700;color:#fff;background:var(--brand)}
+.tag.t{background:var(--teal)}.tag.g{background:var(--gold);color:#2b2b00}.tag.r{background:var(--rose)}.tag.v{background:var(--violet)}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.flow .st{flex:1 1 130px;background:var(--soft);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;font-size:13.5px;position:relative}
+.flow .st b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
+.flow .ar{align-self:center;color:var(--brand);font-weight:800;font-size:20px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.6px;background:var(--soft)}
+.dcard{border:1.5px solid var(--line);border-top:5px solid var(--brand);border-radius:16px;background:var(--card);padding:14px 16px;box-shadow:var(--shadow)}
+.dcard h4{margin:0;color:var(--ink);font-size:17px}
+.dcard .cls{font-size:12px;color:var(--muted);margin-bottom:8px}
+.dcard ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+.dcard.t{border-top-color:var(--teal)}.dcard.g{border-top-color:var(--gold)}.dcard.v{border-top-color:var(--violet)}.dcard.r{border-top-color:var(--rose)}
+.panel{background:var(--soft);border:1.5px dashed var(--brand);border-radius:14px;padding:12px 16px;min-height:76px}
+.panel b{color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--brand)}
+.meter{height:12px;border-radius:8px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--brand));transition:width .3s}
+.nextbar{display:flex;justify-content:space-between;gap:12px;margin-top:10px}
+.nextbar a{text-decoration:none;color:var(--brand);font-weight:700;border:1.5px solid var(--brand);border-radius:20px;padding:6px 16px}
+.nextbar a:hover{background:var(--brand);color:#fff}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.mcard{display:block;text-decoration:none;color:inherit;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);transition:.15s}
+.mcard:hover{transform:translateY(-3px);border-color:var(--brand)}
+.mcard .n{width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;margin-bottom:8px}
+.mcard h4{margin:0 0 4px;color:var(--ink);font-size:16px}.mcard p{margin:0;color:var(--muted);font-size:13px}
+.hero{background:linear-gradient(135deg,var(--brand-deep),var(--brand));color:#fff;border-radius:26px;padding:34px 38px;margin-bottom:22px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;box-shadow:var(--shadow)}
+.hero h1{color:#fff;font-size:40px;margin:6px 0}
+.hero p{margin:4px 0;opacity:.92}
+.hero .by{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.hero .by span{background:rgba(255,255,255,.16);border-radius:20px;padding:5px 15px;font-weight:700}
+.q{margin-bottom:14px}.q .opt{display:block;width:100%;text-align:left;font:inherit;font-size:14px;margin:6px 0;padding:9px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);cursor:pointer}
+.q .opt:hover{border-color:var(--brand)}.q .opt.ok{background:#dff0c8;border-color:#6a9a1f;color:#1f3a05}.q .opt.bad{background:#f7d9d4;border-color:var(--rose);color:#5a1a12}
+.q .why{display:none;font-size:13.5px;background:var(--soft);border-radius:10px;padding:8px 12px;margin-top:4px}.q.done .why{display:block}
+.hm td{text-align:center;font-weight:700;border:2px solid var(--card)}.hm td:first-child{text-align:left;font-weight:700;background:var(--soft);color:var(--ink)}
+.l0{background:#e9efdc;color:#6b7a52}.l1{background:#d4e29b;color:#3d4d10}.l2{background:#f0c95a;color:#4d3800}.l3{background:#e58d73;color:#4d1408}
+:root[data-theme=dark] .l0{background:#2b3520;color:#9aa58d}
+.pulse{animation:pls 1.3s infinite}
+@keyframes pls{50%{opacity:.55}}
+svg.syn .t{transition:.2s}
+svg.syn[data-sel=mph] .t-mph,svg.syn[data-sel=amp] .t-amp,svg.syn[data-sel=atx] .t-atx,svg.syn[data-sel=gfc] .t-gfc{stroke:#e6a100!important;stroke-width:4!important;filter:drop-shadow(0 0 7px #e6a100);animation:pls 1.2s infinite}
+.dot{animation:drift 3.5s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(9px,-7px)}}
+.reg{cursor:pointer}.reg:hover{opacity:.8}
+body.present .shell{grid-template-columns:1fr}body.present nav.side{display:none}body.present main{max-width:1280px;margin:0 auto;font-size:17px}
+@media(max-width:860px){.shell{grid-template-columns:1fr}nav.side{position:static;height:auto;display:flex;flex-wrap:wrap;gap:4px;padding:10px}nav.side h6,nav.side .who{display:none}main{padding:16px}.grid2,.grid3,.grid4,.hero{grid-template-columns:1fr}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="logo" id="logo"></div>
+  <span class="sub">Farmacología general · TADH</span>
+  <span class="sp"></span>
+  <button class="hbtn" id="pres" title="Oculta el menú para proyectar (tecla F)">⛶ Presentar</button>
+  <button class="hbtn" id="theme" title="Cambiar tema">☀ / ☾</button>
+</header>
+<div class="shell">
+  <nav class="side" id="side"></nav>
+  <main id="main"></main>
+</div>
+
+<script>
+/* ---------- datos de módulos ---------- */
+const MODS=[
+ {id:'intro',n:0,t:'¿Qué es el TADH?',d:'Definición, criterios y presentaciones',pre:'Preámbulo · Clínica'},
+ {id:'neuro',n:1,t:'Neurobiología',d:'Circuitos, catecolaminas y la curva en U',pre:'Fisiopatología'},
+ {id:'sinapsis',n:2,t:'La sinapsis y los blancos',d:'DAT, NET, VMAT2, MAO y receptores α2A',pre:'Farmacodinamia'},
+ {id:'estim',n:3,t:'Estimulantes',d:'Metilfenidato, anfetaminas y lisdexanfetamina',pre:'Fármacos de 1ª línea'},
+ {id:'nonest',n:4,t:'No estimulantes',d:'Atomoxetina, viloxazina, guanfacina, clonidina',pre:'Alternativas'},
+ {id:'pk',n:5,t:'Farmacocinética y seguridad',d:'Metabolismo, interacciones y efectos adversos',pre:'Uso racional'},
+ {id:'algo',n:6,t:'Algoritmo y evidencia',d:'Cómo se decide y cuánto funcionan',pre:'Integración'}
+];
+const $=s=>document.querySelector(s);
+const OWL=(s=48)=>`<svg width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="38" rx="21" ry="22" fill="#9a6b3a"/><path d="M14 22 L20 8 L28 18Z M50 22 L44 8 L36 18Z" fill="#7d5428"/><ellipse cx="32" cy="42" rx="13" ry="14" fill="#e8d3a8"/><circle cx="23" cy="30" r="9" fill="#fff"/><circle cx="41" cy="30" r="9" fill="#fff"/><circle cx="24" cy="31" r="4.5" fill="#222"/><circle cx="40" cy="31" r="4.5" fill="#222"/><circle cx="25.5" cy="29.5" r="1.4" fill="#fff"/><circle cx="41.5" cy="29.5" r="1.4" fill="#fff"/><path d="M29 36 L32 42 L35 36Z" fill="#e0a21b"/><rect x="22" y="2" width="20" height="5" fill="#4c5c1e"/><path d="M16 8 L32 2 L48 8 L32 14Z" fill="#677d29"/></svg>`;
+$('#logo').innerHTML=OWL(34)+'<span>FarmaTADH</span>';
+
+function fig(title,svg,interp,id){return `<div class="fig"><div class="fh"><span class="ft">${title}</span>${interp?`<button class="btn" data-interp="${id}">ⓘ Interpretación</button>`:''}</div>${svg}${interp?`<div class="interp" id="i-${id}">${interp}</div>`:''}</div>`}
+function dopi(msg){return `<div class="callout">${OWL(52)}<div class="bubble"><b class="name">Dopi:</b> ${msg}</div></div>`}
+function plan(html){return `<details class="card" open><summary>▾ Planteamiento</summary><div style="margin-top:8px">${html}</div></details>`}
+function nextbar(i){const p=MODS[i-1],n=MODS[i+1];return `<div class="nextbar"><span>${p?`<a href="#/m/${p.id}">← ${p.n}. ${p.t}</a>`:''}</span><span>${n?`<a href="#/m/${n.id}">Siguiente módulo: ${n.n} →</a>`:`<a href="#/desafio">Ir al desafío →</a>`}</span></div>`}
+const arrowDefs=`<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#677d29"/></marker></defs>`;
+
+/* ---------- módulos ---------- */
+const R={};
+
+R.intro=()=>({
+ lead:'Un recorrido por el trastorno por déficit de atención e hiperactividad (TADH) como trastorno del neurodesarrollo, para entender por qué su tratamiento farmacológico gira en torno a las catecolaminas.',
+ dopi:'¡Hola! Antes de hablar de fármacos hay que saber qué estamos tratando: <b>un patrón persistente de inatención y/o hiperactividad-impulsividad</b> que interfiere con el funcionamiento. Toca cada círculo del esquema.',
+ plan:plan(`El TADH es un trastorno del neurodesarrollo con <b>alta heredabilidad</b> y un diagnóstico clínico basado en el DSM-5-TR. Los fármacos no “curan” el trastorno: <b>modulan la neurotransmisión catecolaminérgica</b> para mejorar el control atencional y ejecutivo mientras actúan.<br><br><b>Actividad:</b> (1) selecciona cada presentación clínica y lee sus síntomas; (2) revisa los criterios diagnósticos; (3) identifica qué comorbilidades cambian la elección del fármaco.`),
+ body:`
+ <div class="grid4" style="margin-bottom:20px">
+  <div class="tile"><div class="big">≈5 %</div><div class="lbl">niños y adolescentes</div></div>
+  <div class="tile"><div class="big">≈2,5 %</div><div class="lbl">adultos</div></div>
+  <div class="tile"><div class="big">70–80 %</div><div class="lbl">heredabilidad estimada</div></div>
+  <div class="tile"><div class="big">≈2 : 1</div><div class="lbl">hombre : mujer en la infancia</div></div>
+ </div>
+ ${fig('Presentaciones clínicas del TADH (DSM-5-TR)',`
+ <svg viewBox="0 0 640 250" id="venn"><g class="reg" data-p="in"><circle cx="240" cy="125" r="108" fill="#0b7a8a" fill-opacity=".30" stroke="#0b7a8a" stroke-width="2.5"/><text x="170" y="118" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">Predominio</text><text x="170" y="138" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">inatento</text></g>
+ <g class="reg" data-p="hi"><circle cx="400" cy="125" r="108" fill="#677d29" fill-opacity=".30" stroke="#677d29" stroke-width="2.5"/><text x="470" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">Predominio</text><text x="470" y="128" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">hiperactivo-</text><text x="470" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">impulsivo</text></g>
+ <g class="reg" data-p="co"><path d="M320 28 A108 108 0 0 1 320 222 A108 108 0 0 1 320 28Z" fill="#d9a21b" fill-opacity=".55" stroke="#d9a21b" stroke-width="2"/><text x="320" y="130" text-anchor="middle" font-size="15" font-weight="800" fill="var(--ink)">Combinado</text></g></svg>
+ <div class="panel" id="vennp" style="margin-top:8px"><b>Selecciona una región.</b> Cada dominio tiene 9 síntomas; se requieren ≥ 6 (≥ 5 desde los 17 años).</div>`,
+ 'Los dos círculos son los dos dominios sintomáticos. La zona de intersección corresponde a la presentación combinada (criterios completos en ambos dominios durante los últimos 6 meses). La presentación puede cambiar a lo largo de la vida.','venn')}
+ ${fig('Criterios diagnósticos: los cinco requisitos',`
+ <div class="flow"><div class="st"><b>1 · Síntomas</b>≥ 6 de 9 en un dominio (≥ 5 si ≥ 17 años)</div><span class="ar">›</span>
+ <div class="st"><b>2 · Inicio</b>varios síntomas antes de los 12 años</div><span class="ar">›</span>
+ <div class="st"><b>3 · Persistencia</b>≥ 6 meses, desproporcionados al desarrollo</div><span class="ar">›</span>
+ <div class="st"><b>4 · Contextos</b>en ≥ 2 entornos (casa, escuela, trabajo)</div><span class="ar">›</span>
+ <div class="st"><b>5 · Deterioro</b>interfiere con funcionamiento y no se explica mejor por otro trastorno</div></div>`,
+ 'El diagnóstico es clínico: no existe un biomarcador ni una prueba neuropsicológica que lo confirme por sí sola. Los cinco requisitos deben cumplirse a la vez.','crit')}
+ ${fig('Comorbilidades que condicionan el fármaco',`
+ <div class="grid3">
+  <div class="dcard t"><h4>Ansiedad · depresión</h4><div class="cls">Frecuentes (≈ 1 de cada 3)</div>Los estimulantes pueden aumentar el nerviosismo; atomoxetina es una alternativa razonable.</div>
+  <div class="dcard g"><h4>Tics · síndrome de Tourette</h4><div class="cls">Vigilar</div>Los estimulantes no suelen empeorarlos de forma sistemática, pero se monitoriza; guanfacina/clonidina ayudan a ambos.</div>
+  <div class="dcard r"><h4>Consumo de sustancias</h4><div class="cls">Riesgo de desvío / abuso</div>Preferir formulaciones de liberación prolongada o no estimulantes.</div>
+  <div class="dcard v"><h4>Trastorno del espectro autista</h4><div class="cls">Coexiste a menudo</div>Mayor sensibilidad a efectos adversos: iniciar con dosis bajas.</div>
+  <div class="dcard"><h4>Oposicionista desafiante</h4><div class="cls">Muy frecuente en niños</div>Tratar el TADH mejora síntomas; añadir intervención conductual.</div>
+  <div class="dcard t"><h4>Trastornos del aprendizaje · sueño</h4><div class="cls">Comunes</div>El insomnio puede ser síntoma o efecto adverso: evaluar antes de ajustar.</div>
+ </div>`,'','com')}
+ `,
+ init(){
+  const T={in:['Inatención','Falla en detalles · dificultad para sostener la atención · parece no escuchar · no termina tareas · desorganización · evita esfuerzo mental sostenido · pierde objetos · se distrae fácilmente · olvidos cotidianos'],
+   hi:['Hiperactividad-impulsividad','Se mueve o se retuerce · se levanta cuando debe estar sentado · corre/trepa o siente inquietud interna · no juega en silencio · “siempre en marcha” · habla en exceso · responde antes de tiempo · no espera su turno · interrumpe'],
+   co:['Presentación combinada','Cumple criterios de ambos dominios en los últimos 6 meses. Es la presentación más frecuente en población clínica y la que más demanda tratamiento farmacológico sostenido.']};
+  document.querySelectorAll('#venn .reg').forEach(g=>g.onclick=()=>{const t=T[g.dataset.p];$('#vennp').innerHTML=`<b>${t[0]}</b><br>${t[1]}`});
+ }
+});
+
+R.neuro=()=>({
+ lead:'El TADH se asocia con una función menor y un desfase de maduración en circuitos fronto-estriado-cerebelosos regulados por dopamina (DA) y noradrenalina (NA).',
+ dopi:'La clave farmacológica es esta: la corteza prefrontal funciona mejor con un nivel <b>intermedio</b> de DA y NA. Ni muy poco, ni demasiado. Explora el cerebro y luego mueve el deslizador de la curva en U.',
+ plan:plan(`La atención sostenida, la memoria de trabajo y el control inhibitorio dependen de la <b>corteza prefrontal (CPF)</b>. Sus redes necesitan niveles óptimos de NA (receptores α2A) y DA (receptores D1). Con un tono catecolaminérgico bajo, las redes se “desconectan”; con exceso (estrés intenso, sobredosis), también fallan: es la <b>curva en U invertida</b> (Arnsten).<br><br><b>Actividad:</b> (1) haz clic en cada región cerebral; (2) en la curva, ubica al paciente con TADH sin tratar; (3) “administra” el fármaco y luego exagera la dosis.`),
+ body:`
+ ${fig('Circuitos del TADH (esquema sagital simplificado, frente a la izquierda)',`
+ <svg viewBox="0 0 700 380" id="brain">${arrowDefs}
+ <ellipse cx="330" cy="170" rx="270" ry="140" fill="var(--soft)" stroke="var(--line)" stroke-width="3"/>
+ <rect x="345" y="285" width="32" height="80" rx="12" fill="var(--line)"/>
+ <path d="M345 262 C300 230 215 190 185 165" fill="none" stroke="#677d29" stroke-width="3.5" stroke-dasharray="7 5" marker-end="url(#ah)"/>
+ <path d="M345 262 C335 245 322 228 312 218" fill="none" stroke="#677d29" stroke-width="3.5" stroke-dasharray="7 5" marker-end="url(#ah)"/>
+ <path d="M385 268 C410 110 260 35 175 95" fill="none" stroke="#0b7a8a" stroke-width="3" stroke-dasharray="3 5" marker-end="url(#ah)"/>
+ <g class="reg" data-r="cb"><ellipse cx="500" cy="285" rx="80" ry="40" fill="#d9a21b" fill-opacity=".5" stroke="#d9a21b" stroke-width="2.5"/><text x="500" y="290" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Cerebelo</text></g>
+ <g class="reg" data-r="cpf"><ellipse cx="140" cy="150" rx="64" ry="76" fill="#0b7a8a" fill-opacity=".38" stroke="#0b7a8a" stroke-width="3"/><text x="140" y="146" text-anchor="middle" font-size="14" font-weight="800" fill="var(--ink)">Corteza</text><text x="140" y="164" text-anchor="middle" font-size="14" font-weight="800" fill="var(--ink)">prefrontal</text></g>
+ <g class="reg" data-r="acc"><ellipse cx="262" cy="100" rx="42" ry="17" fill="#6b4fa3" fill-opacity=".45" stroke="#6b4fa3" stroke-width="2.5"/><text x="262" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">Cíngulo ant.</text></g>
+ <g class="reg" data-r="str"><ellipse cx="305" cy="190" rx="46" ry="30" fill="#677d29" fill-opacity=".5" stroke="#4c5c1e" stroke-width="2.5"/><text x="305" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Estriado</text></g>
+ <g class="reg" data-r="vta"><circle cx="345" cy="262" r="12" fill="#4c5c1e"/><text x="300" y="300" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)">VTA / SNc (DA)</text></g>
+ <g class="reg" data-r="lc"><circle cx="388" cy="268" r="10" fill="#075563"/><text x="412" y="340" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="start">Locus coeruleus (NA)</text><path d="M392 278 L420 330" stroke="#075563" stroke-width="1.5"/></g>
+ <g font-size="12" fill="var(--text)"><line x1="40" y1="352" x2="74" y2="352" stroke="#677d29" stroke-width="3.5" stroke-dasharray="7 5"/><text x="82" y="356">Vías dopaminérgicas</text><line x1="230" y1="352" x2="264" y2="352" stroke="#0b7a8a" stroke-width="3" stroke-dasharray="3 5"/><text x="272" y="356">Vías noradrenérgicas</text></g>
+ </svg>
+ <div class="panel" id="brainp"><b>Selecciona una región.</b> Los círculos de color son las áreas clave; las líneas punteadas son las proyecciones catecolaminérgicas.</div>`,
+ 'Las neuronas dopaminérgicas (VTA/SNc) y noradrenérgicas (locus coeruleus) del tronco cerebral proyectan a la corteza prefrontal y al estriado. En el TADH estas redes tienen menor activación y maduran con retraso (≈ 3 años de media en el grosor cortical).','brainfig')}
+ <div class="grid2" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)">
+ ${fig('La curva en U invertida: nivel de catecolaminas vs. rendimiento',`
+ <svg viewBox="0 0 640 300" id="uchart"></svg>
+ <input type="range" id="uslider" min="0" max="100" value="30" aria-label="Nivel de catecolaminas en la corteza prefrontal">
+ <div class="chips"><button class="chip" data-u="30">TADH sin tratar</button><button class="chip" data-u="55">Con dosis óptima</button><button class="chip" data-u="90">Sobredosis / estrés extremo</button></div>
+ <div class="panel" id="up"></div>`,
+ 'Eje X: tono catecolaminérgico en la CPF (esquema, no medido). Eje Y: eficiencia de la memoria de trabajo. Los estimulantes y los no estimulantes desplazan al paciente hacia la zona óptima; una dosis excesiva lo lleva al otro lado de la curva (rigidez, ansiedad, empeoramiento).','ufig')}
+ <div>
+ <div class="card"><h3>Genes candidatos</h3>
+  <table><tr><th>Gen</th><th>Proteína</th></tr><tr><td>SLC6A3 (DAT1)</td><td>Transportador de DA</td></tr><tr><td>DRD4 · DRD5</td><td>Receptores de DA</td></tr><tr><td>ADRA2A</td><td>Receptor α2A adrenérgico</td></tr><tr><td>SNAP25</td><td>Liberación de vesículas</td></tr></table>
+  <p style="font-size:13px;color:var(--muted);margin:8px 0 0">Efectos individuales pequeños: es una arquitectura poligénica.</p></div>
+ <div class="card"><h3>Hipótesis resumida</h3>
+  <div class="flow" style="flex-direction:column"><div class="st"><b>Genes + ambiente</b>↓ función DA/NA en CPF y estriado</div><span class="ar" style="text-align:center">↓</span><div class="st"><b>Redes</b>menor control ejecutivo y de recompensa</div><span class="ar" style="text-align:center">↓</span><div class="st"><b>Clínica</b>inatención, impulsividad, aversión a la demora</div></div></div>
+ </div></div>`,
+ init(){
+  const I={cpf:['Corteza prefrontal','Memoria de trabajo, planificación y control inhibitorio. Menor activación y maduración retrasada en TADH. Blanco central: NA vía α2A y DA vía D1.'],
+   acc:['Cíngulo anterior','Monitoreo de conflicto y atención sostenida; hipoactivo en tareas de control en TADH.'],
+   str:['Estriado (caudado, putamen, accumbens)','Recompensa, motivación y selección de acción. Rica en transportador DAT: es la zona donde actúan los estimulantes. Explica la aversión a la demora.'],
+   cb:['Cerebelo','Temporización y coordinación; menor volumen del vermis en algunos estudios.'],
+   vta:['VTA / sustancia negra compacta','Origen de las vías dopaminérgicas mesocortical, mesolímbica y nigroestriatal.'],
+   lc:['Locus coeruleus','Principal fuente de noradrenalina cerebral: regula alerta y atención; modula la CPF por receptores α2A.']};
+  document.querySelectorAll('#brain .reg').forEach(g=>g.onclick=()=>{const t=I[g.dataset.r];$('#brainp').innerHTML=`<b>${t[0]}.</b> ${t[1]}`});
+  const f=x=>100*Math.exp(-Math.pow((x-55)/22,2));
+  const X=x=>50+x*5.6,Y=y=>250-y*2.0;
+  let path='';for(let x=0;x<=100;x+=2)path+=(x?'L':'M')+X(x)+','+Y(f(x));
+  const sv=$('#uchart');
+  sv.innerHTML=`<rect x="50" y="40" width="${25*5.6}" height="210" fill="#b5473a" fill-opacity=".10"/><rect x="${X(25)}" y="40" width="${(70-25)*5.6}" height="210" fill="#677d29" fill-opacity=".10"/><rect x="${X(70)}" y="40" width="${30*5.6}" height="210" fill="#b5473a" fill-opacity=".10"/>
+  <text x="${X(12)}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#b5473a">Déficit</text><text x="${X(47)}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#4c5c1e">Rango óptimo</text><text x="${X(85)}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#b5473a">Exceso</text>
+  <path d="${path}" fill="none" stroke="#003241" stroke-width="4" stroke-linecap="round" style="stroke:var(--ink)"/>
+  <line x1="50" y1="250" x2="610" y2="250" stroke="var(--muted)"/><line x1="50" y1="40" x2="50" y2="250" stroke="var(--muted)"/>
+  <text x="330" y="282" text-anchor="middle" font-size="12" fill="var(--muted)">Nivel de DA / NA en la corteza prefrontal →</text><text transform="translate(16,150) rotate(-90)" text-anchor="middle" font-size="12" fill="var(--muted)">Rendimiento ejecutivo →</text>
+  <circle id="udot" r="11" fill="#d9a21b" stroke="#fff" stroke-width="3"/><text id="ulab" font-size="13" font-weight="800" fill="var(--ink)" text-anchor="middle"></text>`;
+  function upd(){const x=+$('#uslider').value,y=f(x);$('#udot').setAttribute('cx',X(x));$('#udot').setAttribute('cy',Y(y));$('#ulab').setAttribute('x',X(x));$('#ulab').setAttribute('y',Y(y)-18);$('#ulab').textContent=Math.round(y)+' %';
+   $('#up').innerHTML=x<25?'<b>Hipofunción catecolaminérgica.</b> Redes prefrontales débiles: inatención, olvidos, impulsividad.':x<=70?'<b>Zona óptima.</b> Señal/ruido adecuado en la CPF: mejor atención y control inhibitorio.':'<b>Exceso.</b> La NA y la DA excesivas apagan la CPF (receptores α1/D1 saturados): rigidez, ansiedad, empeoramiento.';
+   document.querySelectorAll('[data-u]').forEach(b=>b.classList.toggle('on',+b.dataset.u===x))}
+  $('#uslider').oninput=upd;document.querySelectorAll('[data-u]').forEach(b=>b.onclick=()=>{$('#uslider').value=b.dataset.u;upd()});upd();
+ }
+});
+
+R.sinapsis=()=>({
+ lead:'Todos los fármacos del TADH actúan sobre la neurotransmisión de DA y NA. Cambia de fármaco y mira qué parte de la sinapsis modifica.',
+ dopi:'Piensa en la sinapsis como un grifo: algunos fármacos <b>tapan el desagüe</b> (transportadores), otros <b>abren más el grifo</b> (liberación), y otros <b>afinan al receptor</b> postsináptico.',
+ plan:plan(`En la terminal presináptica, la DA y la NA se almacenan en vesículas (cargadas por <b>VMAT2</b>), se liberan a la hendidura y se retiran por <b>DAT</b> y <b>NET</b>; el exceso citosólico lo degrada la <b>MAO</b>. En la CPF casi no hay DAT, por lo que el NET retira también la DA.<br><br><b>Actividad:</b> (1) elige cada fármaco; (2) observa cuál blanco se ilumina; (3) compara el nivel relativo de catecolaminas en la hendidura.`),
+ body:`
+ ${fig('Sinapsis catecolaminérgica y blancos terapéuticos (esquema)',`
+ <div class="chips" id="drugchips"><button class="chip on" data-d="none">Sin fármaco</button><button class="chip" data-d="mph">Metilfenidato</button><button class="chip" data-d="amp">Anfetamina / lisdexanfetamina</button><button class="chip" data-d="atx">Atomoxetina / viloxazina</button><button class="chip" data-d="gfc">Guanfacina / clonidina</button></div>
+ <svg viewBox="0 0 700 430" class="syn" id="syn" data-sel="none">
+ <rect x="110" y="10" width="480" height="160" rx="55" fill="var(--soft)" stroke="#677d29" stroke-width="3"/>
+ <text x="350" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Terminal presináptica (DA / NA)</text>
+ <rect x="110" y="270" width="480" height="150" rx="55" fill="var(--soft2)" stroke="#0b7a8a" stroke-width="3"/>
+ <text x="350" y="405" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Neurona postsináptica (espina dendrítica en CPF)</text>
+ <text x="30" y="225" font-size="12" font-weight="700" fill="var(--muted)">Hendidura</text>
+ <g><circle cx="200" cy="85" r="22" fill="#d4e29b" stroke="#677d29" stroke-width="2"/><circle cx="192" cy="80" r="3.5" fill="#4c5c1e"/><circle cx="206" cy="90" r="3.5" fill="#4c5c1e"/><circle cx="262" cy="70" r="22" fill="#d4e29b" stroke="#677d29" stroke-width="2"/><circle cx="256" cy="66" r="3.5" fill="#4c5c1e"/><circle cx="270" cy="76" r="3.5" fill="#4c5c1e"/><circle cx="324" cy="92" r="22" fill="#d4e29b" stroke="#677d29" stroke-width="2"/><circle cx="318" cy="88" r="3.5" fill="#4c5c1e"/><circle cx="330" cy="98" r="3.5" fill="#4c5c1e"/></g>
+ <g class="t t-amp" fill="#c9b8e6" stroke="#6b4fa3" stroke-width="2"><rect x="216" y="104" width="12" height="10" rx="3"/><rect x="278" y="89" width="12" height="10" rx="3"/><rect x="340" y="111" width="12" height="10" rx="3"/></g>
+ <text x="222" y="134" font-size="11" font-weight="700" fill="#6b4fa3" text-anchor="middle">VMAT2</text>
+ <ellipse cx="500" cy="80" rx="48" ry="24" fill="#f7e3b1" stroke="#d9a21b" stroke-width="2" class="t t-amp"/><text x="500" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#6b5000">MAO (mitocondria)</text>
+ <g class="t t-mph t-amp" fill="#8aa83a" stroke="#4c5c1e" stroke-width="2"><rect x="165" y="152" width="26" height="30" rx="6"/><rect x="455" y="152" width="26" height="30" rx="6"/></g>
+ <text x="178" y="200" text-anchor="middle" font-size="12" font-weight="800" fill="#4c5c1e">DAT</text><text x="468" y="200" text-anchor="middle" font-size="12" font-weight="800" fill="#4c5c1e">DAT</text>
+ <g class="t t-mph t-amp t-atx" fill="#3fa3b3" stroke="#075563" stroke-width="2"><rect x="312" y="152" width="26" height="30" rx="6"/></g>
+ <text x="325" y="200" text-anchor="middle" font-size="12" font-weight="800" fill="#075563">NET</text>
+ <g class="t t-gfc" fill="#ffd2c9" stroke="#b5473a" stroke-width="2"><path d="M190 270 l-10 -26 h20z"/><path d="M270 270 l-10 -26 h20z"/><path d="M420 270 l-10 -26 h20z"/><path d="M510 270 l-10 -26 h20z"/></g>
+ <g font-size="11" font-weight="800" text-anchor="middle"><text x="190" y="294" fill="#b5473a">α2A</text><text x="260" y="294" fill="#b5473a">α2A</text><text x="420" y="294" fill="#b5473a">α2A</text><text x="510" y="294" fill="#b5473a">α2A</text></g>
+ <g fill="#cfe0ff" stroke="#3a5fb0" stroke-width="2"><path d="M330 270 l-10 -22 h20z"/><path d="M560 270 l-10 -22 h20z"/></g><g font-size="11" font-weight="800" text-anchor="middle" fill="#3a5fb0"><text x="330" y="294">D1</text><text x="560" y="294">D1</text></g>
+ <g id="dots"></g>
+ <path d="M350 238 L350 200" stroke="#677d29" stroke-width="2" marker-end="url(#ah)" display="none"/>
+ ${arrowDefs}
+ </svg>
+ <div style="display:flex;align-items:center;gap:12px;margin:6px 0"><span style="font-size:13px;min-width:230px;color:var(--muted)">Catecolaminas en la hendidura (relativo)</span><div class="meter" style="flex:1"><i id="meter" style="width:30%"></i></div><b id="mval" style="min-width:42px">1,0×</b></div>
+ <div class="panel" id="synp"></div>`,
+ 'Las flechas amarillas pulsantes indican el blanco molecular del fármaco seleccionado. Los círculos verdes (DA) y turquesa (NA) en la hendidura muestran, de forma esquemática, cuánto neurotransmisor hay disponible: cuatro de los cinco grupos aumentan la señal; guanfacina no cambia la concentración, sino la respuesta del receptor.','synfig')}
+ <div class="card"><h3>Resumen blanco ↔ fármaco</h3><table>
+ <tr><th>Fármaco</th><th>Blanco principal</th><th>Efecto sináptico</th></tr>
+ <tr><td><span class="tag">Metilfenidato</span></td><td>DAT y NET (bloqueo)</td><td>↓ recaptación → ↑ DA y NA</td></tr>
+ <tr><td><span class="tag v">Anfetaminas</span></td><td>DAT/NET (sustrato), VMAT2, MAO, TAAR1</td><td>↑ liberación inversa y ↓ recaptación → ↑↑ DA y NA</td></tr>
+ <tr><td><span class="tag t">Atomoxetina · viloxazina</span></td><td>NET (bloqueo selectivo)</td><td>↑ NA en toda la CPF; ↑ DA solo en la CPF</td></tr>
+ <tr><td><span class="tag r">Guanfacina · clonidina</span></td><td>Receptor α2A (agonista)</td><td>↑ señal de redes prefrontales sin ↑ de NA</td></tr></table></div>`,
+ init(){
+  const D={none:{n:6,m:1,h:'<b>Sin fármaco.</b> Liberación y recaptación en equilibrio; el tono catecolaminérgico es bajo en la CPF del paciente con TADH.'},
+   mph:{n:14,m:2.3,h:'<b>Metilfenidato:</b> bloquea DAT y NET (inhibidor de la recaptación). La DA y la NA permanecen más tiempo en la hendidura. Es un efecto dependiente de la actividad neuronal: no libera neurotransmisor por sí mismo.'},
+   amp:{n:19,m:3.2,h:'<b>Anfetaminas:</b> entran por DAT/NET, desplazan DA y NA de las vesículas (VMAT2), invierten el sentido del transportador y bloquean la MAO. Efecto adicional sobre TAAR1. Aumento mayor, independiente de la actividad neuronal. <i>Lisdexanfetamina</i> es un profármaco de d-anfetamina.'},
+   atx:{n:11,m:1.9,h:'<b>Atomoxetina / viloxazina:</b> inhibidores selectivos de NET. Como en la CPF casi no hay DAT, el NET también retira la DA: ↑ NA y DA corticales sin aumentar la DA en el estriado (menos potencial de abuso).'},
+   gfc:{n:6,m:1.2,h:'<b>Guanfacina / clonidina:</b> agonistas α2A. Actúan postsinápticamente en la CPF reforzando la conectividad de las redes (cierre de canales HCN) y, en parte, regulan la liberación de NA. No suben la NA sináptica: <i>afinan</i> la señal.'}};
+  const dots=$('#dots');
+  function draw(n){let h='',s=7;const r=()=>(s=(s*9301+49297)%233280)/233280;for(let i=0;i<n;i++){const x=140+r()*420,y=190+r()*65;h+=`<circle class="dot" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="5" fill="${i%3?'#677d29':'#0b7a8a'}" style="animation-delay:${(r()*3).toFixed(1)}s"/>`}dots.innerHTML=h}
+  function sel(k){$('#syn').dataset.sel=k;draw(D[k].n);$('#meter').style.width=Math.min(100,D[k].m/3.4*100)+'%';$('#mval').textContent=D[k].m.toFixed(1).replace('.',',')+'×';$('#synp').innerHTML=D[k].h;document.querySelectorAll('#drugchips .chip').forEach(c=>c.classList.toggle('on',c.dataset.d===k))}
+  document.querySelectorAll('#drugchips .chip').forEach(c=>c.onclick=()=>sel(c.dataset.d));sel('none');
+ }
+});
+
+R.estim=()=>({
+ lead:'Metilfenidato y anfetaminas son los fármacos con mayor tamaño de efecto en TADH. Comparten diana, pero no mecanismo.',
+ dopi:'Un truco para recordar: <b>metilfenidato = “bloquea”</b>, <b>anfetamina = “libera + bloquea”</b>. Por eso la anfetamina suele ser algo más potente… y algo más abusable.',
+ plan:plan(`Los estimulantes son la <b>primera línea</b> en niños ≥ 6 años, adolescentes y adultos en la mayoría de las guías (AAP, NICE, CANMAT). Su efecto aparece en 30–60 minutos y se pierde al eliminarse el fármaco; no modifican la historia natural del trastorno.<br><br><b>Actividad:</b> (1) compara las cadenas de acción; (2) ordena las formulaciones por duración; (3) decide cuál elegirías para una jornada escolar completa.`),
+ body:`
+ <div class="grid2">
+ ${fig('Metilfenidato: cadena de acción',`
+ <div class="flow"><div class="st"><b>1</b>Se une a DAT y NET (no es sustrato)</div><span class="ar">›</span><div class="st"><b>2</b>Bloquea la recaptación</div><span class="ar">›</span><div class="st"><b>3</b>↑ DA y NA sinápticas</div><span class="ar">›</span><div class="st"><b>4</b>↑ señal en redes de la CPF</div></div>
+ <p style="font-size:13px;color:var(--muted);margin:8px 0 0">Metabolismo: carboxilesterasa hepática (CES1) → ácido ritalínico inactivo; sin CYP clínicamente relevantes.</p>`,'El efecto depende de que la neurona dispare: refuerza la señal existente. Es un “amplificador”, no un “generador”.','mph')}
+ ${fig('Anfetaminas: cadena de acción',`
+ <div class="flow"><div class="st"><b>1</b>Entra a la terminal por DAT/NET</div><span class="ar">›</span><div class="st"><b>2</b>VMAT2: vacía vesículas al citosol</div><span class="ar">›</span><div class="st"><b>3</b>DAT invierte el flujo (efflux)</div><span class="ar">›</span><div class="st"><b>4</b>↑↑ DA y NA; inhibe MAO</div></div>
+ <p style="font-size:13px;color:var(--muted);margin:8px 0 0">Libera neurotransmisor aun sin impulso nervioso. Metabolismo: parcial por CYP2D6; excreción renal pH-dependiente.</p>`,'Por la liberación no vesicular, el aumento de catecolaminas es mayor y menos dependiente de la actividad: mayor potencia y mayor potencial de abuso que el metilfenidato.','amp')}
+ </div>
+ ${fig('Lisdexanfetamina (LDX): un profármaco “a prueba de abuso”',`
+ <div class="flow"><div class="st"><b>Se ingiere</b>L-lisina + d-anfetamina (inactivo)</div><span class="ar">›</span><div class="st"><b>Absorción</b>transportador intestinal PEPT1</div><span class="ar">›</span><div class="st"><b>Hidrólisis en eritrocitos</b>libera d-anfetamina</div><span class="ar">›</span><div class="st"><b>Efecto 13–14 h</b>curva suave, menor “subidón”</div></div>`,
+ 'La conversión depende de enzimas de los eritrocitos y es limitada por velocidad: triturar la cápsula o inhalarla no acelera la liberación de d-anfetamina. Aun así, mantiene potencial de abuso (Lista II).','ldx')}
+ ${fig('Duración de acción por formulación (esquema, horas desde la toma matutina)',`<svg viewBox="0 0 700 340" id="gantt"></svg>`,
+ 'Duraciones aproximadas y variables entre pacientes. Las formulaciones de liberación prolongada evitan dosis a mediodía en la escuela; las de acción corta permiten ajustar por horas (p. ej., dosis vespertina de estudio).','gan')}`,
+ init(){
+  const rows=[['Metilfenidato IR',4,'#677d29','3–5 h'],['Metilfenidato OROS / ER',12,'#677d29','10–12 h'],['Sales mixtas de anfetamina IR',5,'#6b4fa3','4–6 h'],['Sales mixtas de anfetamina XR',12,'#6b4fa3','10–12 h'],['Lisdexanfetamina',13.5,'#6b4fa3','≈ 13–14 h'],['Atomoxetina (efecto continuo)',24,'#0b7a8a','24 h · semanas hasta efecto pleno'],['Guanfacina XR (efecto continuo)',24,'#b5473a','24 h · semanas hasta efecto pleno']];
+  const X=h=>220+h*19;let s='';
+  for(let h=0;h<=24;h+=4)s+=`<line x1="${X(h)}" y1="20" x2="${X(h)}" y2="270" stroke="var(--line)"/><text x="${X(h)}" y="290" text-anchor="middle" font-size="12" fill="var(--muted)">${h} h</text>`;
+  rows.forEach((r,i)=>{const y=30+i*34;s+=`<text x="212" y="${y+16}" text-anchor="end" font-size="12.5" fill="var(--text)">${r[0]}</text><rect x="${X(0)}" y="${y}" width="${r[1]*19}" height="24" rx="12" fill="${r[2]}" fill-opacity=".88"/><text x="${X(0)+10}" y="${y+16}" font-size="11.5" font-weight="700" fill="#fff">${r[3]}</text>`});
+  s+=`<text x="${X(12)}" y="318" text-anchor="middle" font-size="12" fill="var(--muted)">Horas tras la dosis matutina</text>`;$('#gantt').innerHTML=s;
+ }
+});
+
+R.nonest=()=>({
+ lead:'Cuando los estimulantes están contraindicados, no se toleran o no funcionan, se recurre a fármacos que modulan la noradrenalina por otras vías.',
+ dopi:'Los no estimulantes son menos potentes y <b>tardan semanas</b>, pero cubren las 24 horas, no tienen potencial de abuso relevante y sirven en comorbilidad con ansiedad o tics.',
+ plan:plan(`Hay dos estrategias: <b>inhibir el NET</b> (atomoxetina, viloxazina) o <b>activar el receptor α2A</b> en la CPF (guanfacina XR, clonidina XR). Ninguno actúa de inmediato: requieren titulación y adherencia diaria.<br><br><b>Actividad:</b> (1) compara los cuatro fármacos; (2) revisa la advertencia clave de cada uno; (3) identifica cuál usarías en un paciente con tics y otro con ansiedad.`),
+ body:`
+ <div class="grid4" style="margin-bottom:20px">
+  <div class="dcard t"><h4>Atomoxetina</h4><div class="cls">Inhibidor selectivo de NET</div><ul><li>Dosis: 0,5 → 1,2 mg/kg/día (máx. 100 mg)</li><li>Efecto pleno: 4–12 semanas</li><li>CYP2D6: ↑ niveles con fluoxetina/paroxetina</li><li><b>Alerta:</b> ideación suicida (caja negra); hepatotoxicidad rara</li></ul></div>
+  <div class="dcard t"><h4>Viloxazina ER</h4><div class="cls">Inhibidor de NET (+ modulación 5-HT)</div><ul><li>Aprobada en EE. UU. (2021) para ≥ 6 años</li><li>Una toma diaria</li><li>Inhibidor de CYP1A2</li><li><b>Alerta:</b> ideación suicida; ↑ PA y FC</li></ul></div>
+  <div class="dcard r"><h4>Guanfacina XR</h4><div class="cls">Agonista α2A selectivo</div><ul><li>Dosis: 1–7 mg/día según peso/edad</li><li>Efecto: 1–4 semanas</li><li>CYP3A4: ajustar con ketoconazol/rifampicina</li><li><b>Alerta:</b> somnolencia, ↓ PA y FC; no suspender bruscamente</li></ul></div>
+  <div class="dcard g"><h4>Clonidina XR</h4><div class="cls">Agonista α2 (menos selectivo)</div><ul><li>Dosis: 0,1–0,4 mg/día</li><li>Más sedante que guanfacina</li><li>Útil en insomnio y tics</li><li><b>Alerta:</b> hipertensión de rebote si se suspende de golpe</li></ul></div>
+ </div>
+ ${fig('¿Cómo actúan los agonistas α2A en la corteza prefrontal?',`
+ <div class="flow"><div class="st"><b>1 · NA liberada</b>acciona α2A en la espina dendrítica</div><span class="ar">›</span><div class="st"><b>2 · Gi/o</b>↓ AMPc</div><span class="ar">›</span><div class="st"><b>3 · Cierre de canales HCN</b>↑ resistencia de membrana</div><span class="ar">›</span><div class="st"><b>4 · Redes más conectadas</b>mejor memoria de trabajo</div></div>
+ <p style="font-size:13px;color:var(--muted);margin:8px 0 0">Guanfacina imita este mecanismo de forma sostenida; por eso también reduce la distractibilidad “por ruido”.</p>`,
+ 'Es el modelo de Arnsten: el α2A refuerza las sinapsis relevantes y deja la señal de fondo. No “sube” el nivel de neurotransmisor, sino la calidad de la señal postsináptica.','a2')}
+ ${fig('Estimulantes vs. no estimulantes: perfil de uso',`
+ <table><tr><th></th><th>Estimulantes</th><th>No estimulantes</th></tr>
+ <tr><td>Inicio del efecto</td><td>30–60 min</td><td>1–6 semanas</td></tr>
+ <tr><td>Cobertura</td><td>Horas (según formulación)</td><td>24 h</td></tr>
+ <tr><td>Tamaño del efecto (niños)</td><td>≈ 0,8–1,0</td><td>≈ 0,5–0,6</td></tr>
+ <tr><td>Potencial de abuso</td><td>Sí (Lista II)</td><td>No relevante</td></tr>
+ <tr><td>Comorbilidad útil</td><td>—</td><td>Ansiedad, tics, abuso de sustancias, insomnio</td></tr>
+ <tr><td>Uso típico</td><td>1ª línea</td><td>2ª línea o terapia añadida</td></tr></table>`,'','cmp')}`,
+ init(){}
+});
+
+R.pk=()=>({
+ lead:'Conocer cómo se eliminan los fármacos y qué efectos adversos esperar permite elegir, dosificar y monitorizar con seguridad.',
+ dopi:'Dos preguntas antes de recetar: <b>¿qué enzima lo metaboliza?</b> y <b>¿qué le puede subir la presión, la frecuencia cardíaca o la ansiedad a este paciente?</b>',
+ plan:plan(`Los estimulantes elevan ligeramente la presión arterial (PA) y la frecuencia cardíaca (FC) y reducen el apetito y el sueño. Los α2 hacen lo contrario (sedación, ↓ PA y FC). Atomoxetina depende de <b>CYP2D6</b>, polimórfico.<br><br><b>Actividad:</b> (1) revisa la tabla farmacocinética; (2) interpreta el mapa de calor de efectos adversos; (3) enumera qué se monitoriza en cada consulta.`),
+ body:`
+ ${fig('Farmacocinética comparada',`
+ <table><tr><th>Fármaco</th><th>Metabolismo principal</th><th>t½ aprox.</th><th>Punto práctico</th></tr>
+ <tr><td><span class="tag">Metilfenidato</span></td><td>CES1 hepática → ácido ritalínico</td><td>2–3 h</td><td>Sin interacciones por CYP relevantes; “vacaciones de fármaco” posibles</td></tr>
+ <tr><td><span class="tag v">d-Anfetamina / LDX</span></td><td>CYP2D6 parcial; renal pH-dependiente</td><td>≈ 10–12 h (LDX: profármaco t½ &lt; 1 h)</td><td>Acidificar la orina ↑ eliminación; alcalinizar ↑ niveles (antiácidos, bicarbonato)</td></tr>
+ <tr><td><span class="tag t">Atomoxetina</span></td><td>CYP2D6</td><td>≈ 5 h (metabolizador pobre ≈ 21 h)</td><td>Reducir dosis con inhibidores de CYP2D6</td></tr>
+ <tr><td><span class="tag r">Guanfacina XR</span></td><td>CYP3A4</td><td>≈ 18 h</td><td>Ajustar con inhibidores/inductores de CYP3A4</td></tr>
+ <tr><td><span class="tag g">Clonidina</span></td><td>Hepático + renal</td><td>12–16 h</td><td>Ajustar en insuficiencia renal</td></tr></table>`,
+ 'La mayoría de las interacciones relevantes giran en torno a tres enzimas: CYP2D6 (atomoxetina, anfetamina), CYP3A4 (guanfacina) y CES1 (metilfenidato, sin interacciones por CYP). El pH urinario afecta solo a las anfetaminas.','pkt')}
+ ${fig('Mapa de calor de efectos adversos (cualitativo)',`
+ <table class="hm"><tr><th></th><th>Apetito ↓</th><th>Insomnio</th><th>PA / FC</th><th>Sedación</th><th>Ansiedad / irritabilidad</th><th>Potencial de abuso</th></tr>
+ <tr><td>Metilfenidato</td><td class="l2">+ +</td><td class="l2">+ +</td><td class="l2">↑ +</td><td class="l0">—</td><td class="l1">+</td><td class="l2">+ +</td></tr>
+ <tr><td>Anfetaminas / LDX</td><td class="l3">+ + +</td><td class="l2">+ +</td><td class="l2">↑ +</td><td class="l0">—</td><td class="l1">+</td><td class="l3">+ + +</td></tr>
+ <tr><td>Atomoxetina</td><td class="l1">+</td><td class="l1">+</td><td class="l1">↑ +</td><td class="l1">+</td><td class="l1">+</td><td class="l0">—</td></tr>
+ <tr><td>Guanfacina / clonidina</td><td class="l0">—</td><td class="l0">—</td><td class="l2">↓ + +</td><td class="l3">+ + +</td><td class="l0">—</td><td class="l0">—</td></tr></table>
+ <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">Escala orientativa: — nulo · + leve · + + moderado · + + + marcado. Fuente: síntesis de fichas técnicas y guías; no sustituye la ficha del producto.</p>`,
+ 'Los estimulantes comparten efectos activadores (apetito, sueño, PA/FC) y riesgo de abuso. Los agonistas α2 tienen el perfil opuesto: sedación y ↓ PA/FC. Atomoxetina queda en el medio, sin riesgo de abuso.','hmp')}
+ <div class="grid2">
+ <div class="card"><h3>⛔ Precauciones y contraindicaciones</h3><ul style="margin:0;padding-left:18px">
+ <li><b>IMAO</b> (o ≤ 14 días): riesgo de crisis hipertensiva con estimulantes.</li><li>Cardiopatía estructural grave, arritmias, hipertensión no controlada.</li><li>Hipertiroidismo, glaucoma de ángulo cerrado (según ficha).</li><li>Antecedente de psicosis/manía: vigilar.</li><li>Guanfacina/clonidina: no suspender bruscamente (rebote hipertensivo).</li></ul></div>
+ <div class="card"><h3>✔ Monitorización en cada consulta</h3><div class="flow" style="flex-direction:column"><div class="st"><b>Basal</b>antecedentes cardíacos familiares, PA, FC, peso, talla</div><div class="st"><b>Seguimiento</b>PA, FC, peso/talla (curvas), sueño, apetito, humor, tics</div><div class="st"><b>Uso responsable</b>vigilar desvío, mal uso o dosis excesivas</div></div></div>
+ </div>`,
+ init(){}
+});
+
+R.algo=()=>({
+ lead:'Integra todo: qué hacer primero, cómo escalar y qué esperar de cada familia según la evidencia comparada.',
+ dopi:'No se “receta un nombre”: se sigue un camino. La intervención conductual nunca se omite, y en preescolares es <b>la primera línea</b>.',
+ plan:plan(`Las guías (AAP 2019, NICE 2018, CANMAT 2018) coinciden: <b>psicoeducación + intervención conductual/escolar</b> para todos; <b>fármaco</b> desde los 6 años (o antes, si el caso es grave y la terapia conductual falla). Se empieza por estimulantes y se cambia de clase si hay falta de respuesta, efectos adversos o contraindicaciones.<br><br><b>Actividad:</b> (1) recorre el flujograma de arriba abajo; (2) interpreta los tamaños de efecto; (3) justifica por qué estimulantes lideran la jerarquía.`),
+ body:`
+ ${fig('Algoritmo de tratamiento farmacológico (esquema)',`
+ <svg viewBox="0 0 700 535" id="algo">${arrowDefs}
+ <g font-size="13" text-anchor="middle" font-weight="600">
+ <rect x="170" y="8" width="360" height="48" rx="14" fill="var(--soft)" stroke="#677d29" stroke-width="2"/><text x="350" y="29" fill="var(--ink)">Diagnóstico clínico (DSM-5-TR)</text><text x="350" y="46" fill="var(--text)" font-weight="500" font-size="12">+ comorbilidades + riesgo cardiovascular</text>
+ <path d="M300 56 L170 100" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/><path d="M400 56 L530 100" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+ <rect x="30" y="100" width="280" height="56" rx="14" fill="var(--soft2)" stroke="#0b7a8a" stroke-width="2"/><text x="170" y="122" fill="var(--ink)">&lt; 6 años</text><text x="170" y="141" fill="var(--text)" font-weight="500" font-size="12">Entrenamiento conductual a padres (1ª línea)</text>
+ <rect x="400" y="100" width="280" height="56" rx="14" fill="var(--soft)" stroke="#677d29" stroke-width="2"/><text x="540" y="122" fill="var(--ink)">≥ 6 años y adultos</text><text x="540" y="141" fill="var(--text)" font-weight="500" font-size="12">Fármaco + intervención conductual / escolar</text>
+ <path d="M540 156 L540 196" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+ <rect x="400" y="196" width="280" height="56" rx="14" fill="#d4e29b" stroke="#4c5c1e" stroke-width="2.5"/><text x="540" y="218" fill="#2e3a0e" font-weight="800">1ª línea: estimulante</text><text x="540" y="237" fill="#2e3a0e" font-weight="500" font-size="12">Metilfenidato o anfetamina / LDX</text>
+ <path d="M540 252 L540 278" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+ <polygon points="540,278 650,320 540,362 430,320" fill="#fff4cf" stroke="#d9a21b" stroke-width="2.5"/><text x="540" y="318" fill="#4d3800">¿Respuesta</text><text x="540" y="335" fill="#4d3800">y tolerancia?</text>
+ <path d="M430 320 L330 320" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/><text x="380" y="312" fill="#4c5c1e" font-weight="800" font-size="12">Sí</text>
+ <rect x="30" y="292" width="300" height="56" rx="14" fill="var(--soft)" stroke="#677d29" stroke-width="2"/><text x="180" y="314" fill="var(--ink)">Continuar y monitorizar</text><text x="180" y="333" fill="var(--text)" font-weight="500" font-size="12">PA, FC, peso, talla · reevaluar la dosis</text>
+ <path d="M540 362 L540 398" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/><text x="556" y="384" fill="#b5473a" font-weight="800" font-size="12" text-anchor="start">No</text>
+ <rect x="400" y="398" width="280" height="50" rx="14" fill="var(--soft)" stroke="#677d29" stroke-width="2"/><text x="540" y="419" fill="var(--ink)">Optimizar dosis · cambiar de estimulante</text><text x="540" y="437" fill="var(--text)" font-weight="500" font-size="12">(metilfenidato ↔ anfetamina)</text>
+ <path d="M540 448 L540 478" stroke="#677d29" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+ <rect x="400" y="478" width="280" height="52" rx="14" fill="var(--soft2)" stroke="#0b7a8a" stroke-width="2.5"/><text x="540" y="499" fill="var(--ink)" font-weight="800">No estimulante</text><text x="540" y="517" fill="var(--text)" font-weight="500" font-size="12">Atomoxetina · guanfacina XR (± combinar)</text>
+ <rect x="30" y="396" width="300" height="76" rx="14" fill="#fbe7e3" stroke="#b5473a" stroke-width="2" stroke-dasharray="6 4"/><text x="180" y="418" fill="#6a1f14" font-weight="800">Ir directo a no estimulante si:</text><text x="180" y="438" fill="#6a1f14" font-weight="500" font-size="12">tics graves · abuso de sustancias</text><text x="180" y="456" fill="#6a1f14" font-weight="500" font-size="12">ansiedad marcada · cardiopatía / HTA</text>
+ <path d="M330 434 L365 434 L365 504 L400 504" stroke="#b5473a" stroke-width="2.5" fill="none" stroke-dasharray="6 4" marker-end="url(#ah)"/>
+ </g></svg>`,
+ 'Lectura: de arriba abajo. La rama derecha es el camino habitual; la caja punteada roja marca condiciones que adelantan el uso de un no estimulante. En todas las ramas, la intervención psicosocial continúa.','alg')}
+ ${fig('Eficacia comparada frente a placebo (meta-análisis en red, Cortese 2018)',`<svg viewBox="0 0 700 320" id="eff"></svg>`,
+ 'Diferencia media estandarizada (DME) vs. placebo en la escala de síntomas calificada por el clínico. Valores ≈ 0,8 se consideran grandes; ≈ 0,5, moderados. Las anfetaminas mostraron la mayor eficacia en ambos grupos de edad; los fármacos varían mucho en tolerabilidad.','eff')}
+ <div class="card"><h3>Ideas clave para llevar</h3><div class="grid3">
+  <div class="dcard"><h4>1 · Diana común</h4>Todos los fármacos modulan DA/NA en la corteza prefrontal.</div>
+  <div class="dcard v"><h4>2 · Dos familias</h4>Estimulantes (rápidos, potentes) y no estimulantes (24 h, sin abuso).</div>
+  <div class="dcard r"><h4>3 · Seguridad</h4>Medir PA, FC, peso, sueño y buscar interacciones (CYP2D6, CYP3A4, IMAO).</div></div></div>`,
+ init(){
+  const data=[['Anfetaminas',1.02,.79,'#6b4fa3'],['Metilfenidato',.78,.49,'#677d29'],['Atomoxetina',.56,.45,'#0b7a8a'],['Guanfacina',.46,null,'#b5473a'],['Bupropión',null,.32,'#d9a21b']];
+  const X=v=>170+v*440;let s='';
+  [0,.25,.5,.75,1].forEach(v=>s+=`<line x1="${X(v)}" y1="14" x2="${X(v)}" y2="262" stroke="var(--line)"/><text x="${X(v)}" y="282" text-anchor="middle" font-size="12" fill="var(--muted)">${String(v).replace('.',',')}</text>`);
+  data.forEach((d,i)=>{const y=22+i*48;s+=`<text x="160" y="${y+26}" text-anchor="end" font-size="13" font-weight="700" fill="var(--ink)">${d[0]}</text>`;
+   if(d[1]!=null)s+=`<rect x="${X(0)}" y="${y}" width="${d[1]*440}" height="18" rx="9" fill="${d[3]}"/><text x="${X(d[1])+8}" y="${y+14}" font-size="12" font-weight="700" fill="var(--ink)">${String(d[1]).replace('.',',')}</text>`;
+   if(d[2]!=null)s+=`<rect x="${X(0)}" y="${y+20}" width="${d[2]*440}" height="18" rx="9" fill="${d[3]}" fill-opacity=".45" stroke="${d[3]}" stroke-width="1.5"/><text x="${X(d[2])+8}" y="${y+34}" font-size="12" font-weight="700" fill="var(--ink)">${String(d[2]).replace('.',',')}</text>`});
+  s+=`<text x="${X(.5)}" y="306" text-anchor="middle" font-size="12" fill="var(--muted)">DME vs. placebo (mayor = más eficacia)</text><rect x="530" y="296" width="14" height="14" rx="4" fill="#677d29"/><text x="550" y="308" font-size="12" fill="var(--text)">Niños</text><rect x="605" y="296" width="14" height="14" rx="4" fill="#677d29" fill-opacity=".45" stroke="#677d29"/><text x="625" y="308" font-size="12" fill="var(--text)">Adultos</text>`;
+  $('#eff').innerHTML=s;
+ }
+});
+
+/* ---------- Quiz ---------- */
+const QZ=[
+ ['¿Cuál es el mecanismo principal del metilfenidato?',['Libera DA mediante inversión del DAT','Bloquea DAT y NET (inhibe la recaptación)','Agonista del receptor α2A','Inhibe la MAO'],1,'Es un inhibidor de la recaptación: no es sustrato de los transportadores ni libera neurotransmisor por sí mismo.'],
+ ['La lisdexanfetamina es un profármaco. ¿Dónde se convierte en d-anfetamina?',['Hígado, por CYP2D6','Intestino, por esterasas','Eritrocitos, por hidrólisis enzimática','Cerebro, por MAO'],2,'La hidrólisis ocurre en los glóbulos rojos; es limitada por velocidad, lo que suaviza la curva y reduce el atractivo para el abuso.'],
+ ['¿Qué enzima condiciona la dosis de atomoxetina?',['CYP3A4','CES1','CYP2D6','CYP2E1'],2,'Los metabolizadores pobres de CYP2D6 y quienes toman fluoxetina o paroxetina alcanzan niveles mucho mayores.'],
+ ['Guanfacina XR es un agonista de…',['Receptores α1','Receptores α2A','Receptores D2','Receptores β'],1,'El agonismo α2A en la corteza prefrontal refuerza las redes. Debe retirarse gradualmente por el riesgo de hipertensión de rebote.'],
+ ['¿Qué combinación debe evitarse con un estimulante?',['Paracetamol','IMAO (o ≤ 14 días tras suspenderlos)','Vitamina D','Omeprazol'],1,'La combinación puede provocar una crisis hipertensiva por acumulación de catecolaminas.'],
+ ['En un niño de 4 años con TADH, la primera línea es…',['Metilfenidato','Atomoxetina','Entrenamiento conductual a los padres','Clonidina'],2,'Antes de los 6 años se prefiere la intervención conductual; el fármaco se reserva para casos graves o sin respuesta.'],
+ ['Según la curva en U invertida, ¿qué ocurre con un exceso de catecolaminas en la CPF?',['Mejora la memoria de trabajo','No cambia nada','Empeora el rendimiento ejecutivo','Aumenta la conectividad siempre'],2,'Tanto el déficit como el exceso deterioran la función prefrontal: por eso se titula la dosis.'],
+ ['¿Qué fármaco no tiene potencial de abuso relevante y tarda semanas en hacer efecto?',['Anfetamina','Metilfenidato','Atomoxetina','Dextroanfetamina'],2,'Atomoxetina (y viloxazina) inhiben el NET sin aumentar la DA en el estriado.']
+];
+R.desafio=()=>({
+ pre:'Práctica',title:'Desafío: ¿qué tanto recuerdas?',
+ lead:'Ocho preguntas para repasar. Elige una respuesta: verás al instante si acertaste y por qué.',
+ dopi:'Sin presión: es para aprender. Si fallas, la explicación te indica el concepto clave.',
+ plan:'',
+ body:`<div class="card" id="quiz">${QZ.map((q,i)=>`<div class="q" data-i="${i}"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}<div class="why">${q[3]}</div></div>`).join('')}
+ <div style="display:flex;align-items:center;gap:12px;margin-top:10px"><b>Puntaje:</b><div class="meter" style="flex:1"><i id="qbar" style="width:0%"></i></div><b id="qscore">0 / ${QZ.length}</b><button class="btn" id="qreset">Reiniciar</button></div></div>`,
+ init(){
+  let sc=0;const upd=()=>{$('#qscore').textContent=sc+' / '+QZ.length;$('#qbar').style.width=sc/QZ.length*100+'%'};
+  document.querySelectorAll('#quiz .q').forEach(q=>q.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(q.classList.contains('done'))return;q.classList.add('done');const i=+q.dataset.i,j=+b.dataset.j,c=QZ[i][2];if(j===c){b.classList.add('ok');sc++}else{b.classList.add('bad');q.querySelectorAll('.opt')[c].classList.add('ok')}upd()}));
+  $('#qreset').onclick=()=>route();
+ }
+});
+R.acerca=()=>({
+ pre:'Créditos',title:'Acerca de',lead:'Presentación académica de Farmacología General.',dopi:'Este material es educativo y no sustituye el criterio clínico ni la ficha técnica de cada producto.',plan:'',
+ body:`<div class="grid2"><div class="card"><h3>Autores</h3><p style="font-size:17px;margin:4px 0"><b>Juan Esteban Roa</b></p><p style="font-size:17px;margin:4px 0"><b>César Díaz Suárez</b></p><p style="color:var(--muted)">Tema: Trastorno por déficit de atención e hiperactividad (TADH) y su farmacología.<br>Asignatura: Farmacología General.</p></div>
+ <div class="card"><h3>Referencias principales</h3><ol style="padding-left:18px;font-size:13.5px;margin:0">
+ <li>American Psychiatric Association. <i>DSM-5-TR</i>. 2022.</li>
+ <li>Cortese S. et al. Comparative efficacy and tolerability of medications for ADHD: a systematic review and network meta-analysis. <i>Lancet Psychiatry</i> 2018;5:727-738.</li>
+ <li>Wolraich ML et al. Clinical practice guideline for ADHD in children and adolescents (AAP). <i>Pediatrics</i> 2019;144:e20192528.</li>
+ <li>NICE. <i>Attention deficit hyperactivity disorder: diagnosis and management</i> (NG87). 2018.</li>
+ <li>Faraone SV et al. World Federation of ADHD International Consensus Statement. <i>Neurosci Biobehav Rev</i> 2021;128:789-818.</li>
+ <li>Arnsten AFT. Stimulants: therapeutic actions in ADHD. <i>Neuropsychopharmacology</i> 2006;31:2376-2383.</li>
+ <li>Brunton LL (ed.). <i>Goodman &amp; Gilman: Las bases farmacológicas de la terapéutica</i>. Capítulos de neurotransmisión y psicofármacos.</li></ol></div></div>`,
+ init(){}
+});
+
+/* ---------- ruteo y render ---------- */
+function side(cur){
+ return `<h6>Inicio</h6><a href="#/" class="${cur==='home'?'on':''}"><span class="num">⌂</span>Presentación</a><a href="#/modulos" class="${cur==='mods'?'on':''}"><span class="num">≡</span>Todos los módulos</a>
+ <h6>Módulos</h6>${MODS.map(m=>`<a href="#/m/${m.id}" class="${cur===m.id?'on':''}"><span class="num">${m.n}</span>${m.t}</a>`).join('')}
+ <h6>Práctica</h6><a href="#/desafio" class="${cur==='desafio'?'on':''}"><span class="num">★</span>Desafío</a><a href="#/acerca" class="${cur==='acerca'?'on':''}"><span class="num">i</span>Acerca de</a>
+ <div class="who">Juan Esteban Roa<br>César Díaz Suárez<br>Farmacología General</div>`}
+const modGrid=()=>`<div class="mgrid">${MODS.map(m=>`<a class="mcard" href="#/m/${m.id}"><div class="n">${m.n}</div><h4>${m.t}</h4><p>${m.d}</p></a>`).join('')}</div>`;
+function home(){
+ return `<div class="hero"><div><span style="letter-spacing:1.5px;font-size:12px;text-transform:uppercase;opacity:.85">Farmacología general</span><h1>TADH y su farmacología</h1><p style="font-size:18px">Del circuito prefrontal al fármaco: mecanismos, seguridad y decisión terapéutica.</p><div class="by"><span>Juan Esteban Roa</span><span>César Díaz Suárez</span></div></div><div>${OWL(130)}</div></div>
+ ${fig('Mapa de la presentación',`<div class="flow"><div class="st"><b>0 · Clínica</b>Qué es el TADH y cómo se diagnostica</div><span class="ar">›</span><div class="st"><b>1 · Neurobiología</b>Déficit DA/NA en la corteza prefrontal</div><span class="ar">›</span><div class="st"><b>2 · Sinapsis</b>Blancos: DAT, NET, VMAT2, α2A</div><span class="ar">›</span><div class="st"><b>3–4 · Fármacos</b>Estimulantes y no estimulantes</div><span class="ar">›</span><div class="st"><b>5–6 · Uso racional</b>PK, seguridad y algoritmo</div></div>`,'','map')}
+ <h3 style="color:var(--ink)">Módulos</h3>${modGrid()}<p style="margin-top:18px;color:var(--muted);font-size:13px">Consejo para exponer: pulsa <b>F</b> (o “Presentar”) para ocultar el menú y usa las flechas ← → para cambiar de módulo.</p>`}
+function route(){
+ const h=location.hash.replace(/^#\/?/,'');let cur='home',html='',init=null,idx=-1;
+ if(h===''||h==='/'){html=home()}
+ else if(h==='modulos'){cur='mods';html=`<h1>Todos los módulos</h1><p class="lead">Elige cualquier módulo; el orden sugerido va de la clínica a la decisión terapéutica.</p>${modGrid()}`}
+ else{
+  const id=h.startsWith('m/')?h.slice(2):h;const m=MODS.find(x=>x.id===id);
+  if(R[id]){const o=R[id]();cur=id;idx=MODS.findIndex(x=>x.id===id);
+   html=`<div class="crumb"><a href="#/">Inicio</a> › <a href="#/modulos">Módulos</a> › ${m?m.t:o.title}</div><span class="pill">${m?`Módulo ${m.n} · ${m.pre}`:o.pre}</span><h1>${m?m.t:o.title}</h1><p class="lead">${o.lead}</p>${dopi(o.dopi)}${o.plan}${o.body}${m?nextbar(idx):''}`;init=o.init}
+  else html=home()}
+ $('#main').innerHTML=html;$('#side').innerHTML=side(cur);if(init)init();window.scrollTo(0,0);
+}
+addEventListener('hashchange',route);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-interp]');if(b){const el=$('#i-'+b.dataset.interp);el.classList.toggle('show');b.classList.toggle('on')}});
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('ftheme',t)}catch(e){}}
+try{const t=localStorage.getItem('ftheme');if(t)setTheme(t)}catch(e){}
+$('#theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+const tp=()=>document.body.classList.toggle('present');$('#pres').onclick=tp;
+addEventListener('keydown',e=>{if(/INPUT|TEXTAREA/.test(e.target.tagName))return;
+ if(e.key==='f'||e.key==='F')tp();
+ const ids=['','intro','neuro','sinapsis','estim','nonest','pk','algo','desafio'];const cur=location.hash.replace(/^#\/?(m\/)?/,'');let i=ids.indexOf(cur);if(i<0)i=0;
+ if(e.key==='ArrowRight'&&i<ids.length-1)location.hash=ids[i+1]?(ids[i+1]==='desafio'?'#/desafio':'#/m/'+ids[i+1]):'#/';
+ if(e.key==='ArrowLeft'&&i>0)location.hash=ids[i-1]?'#/m/'+ids[i-1]:'#/';});
+route();
+</script>
+</body>
+</html>
